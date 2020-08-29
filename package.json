@@ -3,10 +3,9 @@
   "version": "1.0.0-prealpha",
   "description": "Singular framework common module",
   "main": "dist/common.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
+    "start": "./node_modules/typescript/bin/tsc --build",
+    "docs": "./node_modules/typedoc/bin/typedoc --out docs src",
     "test": "./node_modules/typescript/bin/tsc -p test/tsconfig.json && ./node_modules/mocha/bin/mocha ./test/dist/main.spec.js"
   },
   "repository": {
