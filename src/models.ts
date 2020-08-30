@@ -4,6 +4,8 @@ import { CorsOptions } from 'cors';
 export { Response, NextFunction } from 'express';
 export type PipeFunction = (value: any, rawValues?: any) => Omit<void, any>;
 export type AsyncPipeFunction = (value: any, rawValues?: any) => Promise<Omit<void, any>>;
+export type RequestTransformerFunction = (req: Request) => void;
+export type AsyncRequestTransformerFunction = (req: Request) => Promise<void>;
 export type ValidatorFunction = (value: any, rawValues?: any) => boolean|Error;
 export type AsyncValidatorFunction = (value: any, rawValues?: any) => Promise<boolean|Error>;
 
@@ -124,8 +126,8 @@ export interface OnInit {
 
 export enum AggregationTarget {
 
-  Header,
-  Query,
+  Headers,
+  Queries,
   Body,
   Custom
 
@@ -142,6 +144,13 @@ export interface TransformationRule {
 
   target: AggregationTarget;
   transformer: BodyTransformationDefinition|TransformationDefinition|PipeFunction|AsyncPipeFunction|ExecutablePipes|'origin';
+
+}
+
+export interface CustomTransformationRule {
+
+  target: AggregationTarget.Custom;
+  transformer: AsyncRequestTransformerFunction|RequestTransformerFunction;
 
 }
 
