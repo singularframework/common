@@ -66,7 +66,7 @@ export interface CORSPolicy {
 export interface RouteDefinition {
 
   path: string;
-  handler: string;
+  middleware: string[];
   method?: RouteMethod;
   aggregate?: Array<ValidationRule|TransformationRule>;
   corsPolicy?: CORSPolicy;
