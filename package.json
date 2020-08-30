@@ -29,6 +29,8 @@
   },
   "homepage": "https://github.com/singularframework/common#readme",
   "dependencies": {
+    "@types/cors": "^2.8.7",
+    "@types/express": "^4.17.7",
     "source-map-support": "^0.5.19"
   },
   "devDependencies": {
