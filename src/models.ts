@@ -26,7 +26,7 @@ export interface BaseServerConfig {
   excludeQueryParamsInLogs?: string[];
   excludeHeadersInLogs?: string[];
   logRequestHeaders?: boolean;
-  logResponseMessages?: boolean;
+  logResponseErrors?: boolean;
   fileUploadLimit?: string;
   sessionManagement?: boolean;
   cookieSecret?: string;
