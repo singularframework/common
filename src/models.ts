@@ -20,6 +20,7 @@ export interface BaseServerConfig {
   colorfulLogs?: boolean;
   consoleLogLevels?: ('debug'|'info'|'notice'|'warn'|'error')[]|'all';
   writeLogsToFile?: boolean;
+  logFileDirPath?: string;
   logFileLevels?: ('debug'|'info'|'notice'|'warn'|'error')[]|'all';
   logFileMaxAge?: number;
   archiveLogs?: boolean;
