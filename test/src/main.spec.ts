@@ -1,6 +1,6 @@
 import 'source-map-support/register';
 import { expect } from 'chai';
-import { resolveRef, validate, transform, AggregationTarget, Request } from '../..';
+import { resolveRef, validate, transform, route, AggregationTarget, Request, RouteMethod } from '../..';
 
 describe('Common', function() {
 
@@ -140,6 +140,613 @@ describe('Common', function() {
     expect(customRule).to.deep.equal({
       target: AggregationTarget.Custom,
       transformer: customTransformer
+    });
+
+  });
+
+  it('should build route definitions correctly', function() {
+
+    const validator = value => !!value;
+    const transformer = value => +value;
+
+    expect(route.get('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.GET,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.post('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.POST,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.put('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.PUT,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.delete('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.DELETE,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.patch('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.PATCH,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.checkout('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.CHECKOUT,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.copy('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.COPY,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.head('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.HEAD,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.lock('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.LOCK,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.merge('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.MERGE,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.mkactivity('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.MKACTIVITY,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.mkcol('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.MKCOL,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.move('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.MOVE,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.msearch('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.M_SEARCH,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.notify('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.NOTIFY,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.options('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.OPTIONS,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.purge('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.PURGE,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.report('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.REPORT,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.search('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.SEARCH,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.subscribe('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.SUBSCRIBE,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.trace('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.TRACE,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.unlock('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.UNLOCK,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.UNSUBSCRIBE('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.UNSUBSCRIBE,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.all('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.ALL,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.global('/', 'middleware', [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: undefined,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.GET('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.GET,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.POST('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.POST,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.PUT('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.PUT,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.DELETE('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.DELETE,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.PATCH('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.PATCH,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.CHECKOUT('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.CHECKOUT,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.COPY('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.COPY,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.HEAD('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.HEAD,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.LOCK('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.LOCK,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.MERGE('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.MERGE,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.MKACTIVITY('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.MKACTIVITY,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.MKCOL('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.MKCOL,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.MOVE('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.MOVE,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.MSEARCH('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.M_SEARCH,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.NOTIFY('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.NOTIFY,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.OPTIONS('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.OPTIONS,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.PURGE('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.PURGE,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.REPORT('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.REPORT,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.SEARCH('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.SEARCH,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.SUBSCRIBE('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.SUBSCRIBE,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.TRACE('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.TRACE,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.UNLOCK('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.UNLOCK,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.UNSUBSCRIBE('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.UNSUBSCRIBE,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.ALL('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: RouteMethod.ALL,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
+    });
+
+    expect(route.GLOBAL('/', ['middleware'], [ validate.body(validator), transform.body(transformer) ], { origin: true }))
+    .to.deep.equal({
+      path: '/',
+      method: undefined,
+      middleware: ['middleware'],
+      aggregate: [
+        { target: AggregationTarget.Body, validator },
+        { target: AggregationTarget.Body, transformer }
+      ],
+      corsPolicy: { origin: true }
     });
 
   });

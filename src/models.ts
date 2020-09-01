@@ -83,7 +83,26 @@ export enum RouteMethod {
   POST = 'post',
   PUT = 'put',
   DELETE = 'delete',
-  PATCH = 'patch'
+  PATCH = 'patch',
+  CHECKOUT = 'checkout',
+  COPY = 'copy',
+  HEAD = 'head',
+  LOCK = 'lock',
+  MERGE = 'merge',
+  MKACTIVITY = 'mkactivity',
+  MKCOL = 'mkcol',
+  MOVE = 'move',
+  M_SEARCH = 'm-search',
+  NOTIFY = 'notify',
+  OPTIONS = 'options',
+  PURGE = 'purge',
+  REPORT = 'report',
+  SEARCH = 'search',
+  SUBSCRIBE = 'subscribe',
+  TRACE = 'trace',
+  UNLOCK = 'unlock',
+  UNSUBSCRIBE = 'unsubscribe',
+  ALL = 'all'
 
 }
 
