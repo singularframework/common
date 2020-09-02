@@ -22,6 +22,7 @@ export interface BaseServerConfig {
   consoleLogLevels?: ('debug'|'info'|'notice'|'warn'|'error')[]|'all';
   writeLogsToFile?: boolean;
   logFileDirPath?: string;
+  logFileArchiveDirPath?: string;
   logFileLevels?: ('debug'|'info'|'notice'|'warn'|'error')[]|'all';
   logFileMaxAge?: number;
   archiveLogs?: boolean;
