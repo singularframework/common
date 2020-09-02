@@ -1,6 +1,6 @@
 {
   "name": "@singular/common",
-  "version": "1.0.0-alpha.9",
+  "version": "1.0.0-alpha.10",
   "description": "Singular framework common module",
   "main": "dist/common.js",
   "scripts": {
