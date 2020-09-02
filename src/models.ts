@@ -210,41 +210,41 @@ export interface TransformationDefinition {
 
 export interface PluginEvents {
 
-  on(event: 'config:before', listener: (data: PluginDataBeforeConfig) => void|Promise<void>): this;
-  on(event: 'config:after', listener: (data: PluginDataAfterConfig) => void|Promise<void>): this;
-  on(event: 'middleware:internal:before', listener: (data: PluginDataBeforeInternalMiddleware) => void|Promise<void>): this;
-  on(event: 'middleware:internal:after', listener: (data: PluginDataAfterInternalMiddleware) => void|Promise<void>): this;
-  on(event: 'middleware:user:before', listener: (data: PluginDataBeforeUserMiddleware) => void|Promise<void>): this;
-  on(event: 'middleware:user:after', listener: (data: PluginDataAfterUserMiddleware) => void|Promise<void>): this;
-  on(event: 'launch:before', listener: (data: PluginDataBeforeLaunch) => void|Promise<void>): this;
-  on(event: 'launch:after', listener: (data: PluginDataAfterLaunch) => void|Promise<void>): this;
+  on(event: 'plugin:config:before', listener: (data: PluginDataBeforeConfig) => void|Promise<void>): this;
+  on(event: 'plugin:config:after', listener: (data: PluginDataAfterConfig) => void|Promise<void>): this;
+  on(event: 'plugin:middleware:internal:before', listener: (data: PluginDataBeforeInternalMiddleware) => void|Promise<void>): this;
+  on(event: 'plugin:middleware:internal:after', listener: (data: PluginDataAfterInternalMiddleware) => void|Promise<void>): this;
+  on(event: 'plugin:middleware:user:before', listener: (data: PluginDataBeforeUserMiddleware) => void|Promise<void>): this;
+  on(event: 'plugin:middleware:user:after', listener: (data: PluginDataAfterUserMiddleware) => void|Promise<void>): this;
+  on(event: 'plugin:launch:before', listener: (data: PluginDataBeforeLaunch) => void|Promise<void>): this;
+  on(event: 'plugin:launch:after', listener: (data: PluginDataAfterLaunch) => void|Promise<void>): this;
 
-  once(event: 'config:before', listener: (data: PluginDataBeforeConfig) => void|Promise<void>): this;
-  once(event: 'config:after', listener: (data: PluginDataAfterConfig) => void|Promise<void>): this;
-  once(event: 'middleware:internal:before', listener: (data: PluginDataBeforeInternalMiddleware) => void|Promise<void>): this;
-  once(event: 'middleware:internal:after', listener: (data: PluginDataAfterInternalMiddleware) => void|Promise<void>): this;
-  once(event: 'middleware:user:before', listener: (data: PluginDataBeforeUserMiddleware) => void|Promise<void>): this;
-  once(event: 'middleware:user:after', listener: (data: PluginDataAfterUserMiddleware) => void|Promise<void>): this;
-  once(event: 'launch:before', listener: (data: PluginDataBeforeLaunch) => void|Promise<void>): this;
-  once(event: 'launch:after', listener: (data: PluginDataAfterLaunch) => void|Promise<void>): this;
+  once(event: 'plugin:config:before', listener: (data: PluginDataBeforeConfig) => void|Promise<void>): this;
+  once(event: 'plugin:config:after', listener: (data: PluginDataAfterConfig) => void|Promise<void>): this;
+  once(event: 'plugin:middleware:internal:before', listener: (data: PluginDataBeforeInternalMiddleware) => void|Promise<void>): this;
+  once(event: 'plugin:middleware:internal:after', listener: (data: PluginDataAfterInternalMiddleware) => void|Promise<void>): this;
+  once(event: 'plugin:middleware:user:before', listener: (data: PluginDataBeforeUserMiddleware) => void|Promise<void>): this;
+  once(event: 'plugin:middleware:user:after', listener: (data: PluginDataAfterUserMiddleware) => void|Promise<void>): this;
+  once(event: 'plugin:launch:before', listener: (data: PluginDataBeforeLaunch) => void|Promise<void>): this;
+  once(event: 'plugin:launch:after', listener: (data: PluginDataAfterLaunch) => void|Promise<void>): this;
 
-  addListener(event: 'config:before', listener: (data: PluginDataBeforeConfig) => void|Promise<void>): this;
-  addListener(event: 'config:after', listener: (data: PluginDataAfterConfig) => void|Promise<void>): this;
-  addListener(event: 'middleware:internal:before', listener: (data: PluginDataBeforeInternalMiddleware) => void|Promise<void>): this;
-  addListener(event: 'middleware:internal:after', listener: (data: PluginDataAfterInternalMiddleware) => void|Promise<void>): this;
-  addListener(event: 'middleware:user:before', listener: (data: PluginDataBeforeUserMiddleware) => void|Promise<void>): this;
-  addListener(event: 'middleware:user:after', listener: (data: PluginDataAfterUserMiddleware) => void|Promise<void>): this;
-  addListener(event: 'launch:before', listener: (data: PluginDataBeforeLaunch) => void|Promise<void>): this;
-  addListener(event: 'launch:after', listener: (data: PluginDataAfterLaunch) => void|Promise<void>): this;
+  addListener(event: 'plugin:config:before', listener: (data: PluginDataBeforeConfig) => void|Promise<void>): this;
+  addListener(event: 'plugin:config:after', listener: (data: PluginDataAfterConfig) => void|Promise<void>): this;
+  addListener(event: 'plugin:middleware:internal:before', listener: (data: PluginDataBeforeInternalMiddleware) => void|Promise<void>): this;
+  addListener(event: 'plugin:middleware:internal:after', listener: (data: PluginDataAfterInternalMiddleware) => void|Promise<void>): this;
+  addListener(event: 'plugin:middleware:user:before', listener: (data: PluginDataBeforeUserMiddleware) => void|Promise<void>): this;
+  addListener(event: 'plugin:middleware:user:after', listener: (data: PluginDataAfterUserMiddleware) => void|Promise<void>): this;
+  addListener(event: 'plugin:launch:before', listener: (data: PluginDataBeforeLaunch) => void|Promise<void>): this;
+  addListener(event: 'plugin:launch:after', listener: (data: PluginDataAfterLaunch) => void|Promise<void>): this;
 
-  addOnceListener(event: 'config:before', listener: (data: PluginDataBeforeConfig) => void|Promise<void>): this;
-  addOnceListener(event: 'config:after', listener: (data: PluginDataAfterConfig) => void|Promise<void>): this;
-  addOnceListener(event: 'middleware:internal:before', listener: (data: PluginDataBeforeInternalMiddleware) => void|Promise<void>): this;
-  addOnceListener(event: 'middleware:internal:after', listener: (data: PluginDataAfterInternalMiddleware) => void|Promise<void>): this;
-  addOnceListener(event: 'middleware:user:before', listener: (data: PluginDataBeforeUserMiddleware) => void|Promise<void>): this;
-  addOnceListener(event: 'middleware:user:after', listener: (data: PluginDataAfterUserMiddleware) => void|Promise<void>): this;
-  addOnceListener(event: 'launch:before', listener: (data: PluginDataBeforeLaunch) => void|Promise<void>): this;
-  addOnceListener(event: 'launch:after', listener: (data: PluginDataAfterLaunch) => void|Promise<void>): this;
+  addOnceListener(event: 'plugin:config:before', listener: (data: PluginDataBeforeConfig) => void|Promise<void>): this;
+  addOnceListener(event: 'plugin:config:after', listener: (data: PluginDataAfterConfig) => void|Promise<void>): this;
+  addOnceListener(event: 'plugin:middleware:internal:before', listener: (data: PluginDataBeforeInternalMiddleware) => void|Promise<void>): this;
+  addOnceListener(event: 'plugin:middleware:internal:after', listener: (data: PluginDataAfterInternalMiddleware) => void|Promise<void>): this;
+  addOnceListener(event: 'plugin:middleware:user:before', listener: (data: PluginDataBeforeUserMiddleware) => void|Promise<void>): this;
+  addOnceListener(event: 'plugin:middleware:user:after', listener: (data: PluginDataAfterUserMiddleware) => void|Promise<void>): this;
+  addOnceListener(event: 'plugin:launch:before', listener: (data: PluginDataBeforeLaunch) => void|Promise<void>): this;
+  addOnceListener(event: 'plugin:launch:after', listener: (data: PluginDataAfterLaunch) => void|Promise<void>): this;
 
 }
 
