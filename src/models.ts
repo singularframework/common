@@ -219,15 +219,6 @@ export interface PluginEvents {
   on(event: 'plugin:launch:before', listener: (data: PluginDataBeforeLaunch) => void|Promise<void>): this;
   on(event: 'plugin:launch:after', listener: (data: PluginDataAfterLaunch) => void|Promise<void>): this;
 
-  once(event: 'plugin:config:before', listener: (data: PluginDataBeforeConfig) => void|Promise<void>): this;
-  once(event: 'plugin:config:after', listener: (data: PluginDataAfterConfig) => void|Promise<void>): this;
-  once(event: 'plugin:middleware:internal:before', listener: (data: PluginDataBeforeInternalMiddleware) => void|Promise<void>): this;
-  once(event: 'plugin:middleware:internal:after', listener: (data: PluginDataAfterInternalMiddleware) => void|Promise<void>): this;
-  once(event: 'plugin:middleware:user:before', listener: (data: PluginDataBeforeUserMiddleware) => void|Promise<void>): this;
-  once(event: 'plugin:middleware:user:after', listener: (data: PluginDataAfterUserMiddleware) => void|Promise<void>): this;
-  once(event: 'plugin:launch:before', listener: (data: PluginDataBeforeLaunch) => void|Promise<void>): this;
-  once(event: 'plugin:launch:after', listener: (data: PluginDataAfterLaunch) => void|Promise<void>): this;
-
   addListener(event: 'plugin:config:before', listener: (data: PluginDataBeforeConfig) => void|Promise<void>): this;
   addListener(event: 'plugin:config:after', listener: (data: PluginDataAfterConfig) => void|Promise<void>): this;
   addListener(event: 'plugin:middleware:internal:before', listener: (data: PluginDataBeforeInternalMiddleware) => void|Promise<void>): this;
@@ -236,15 +227,6 @@ export interface PluginEvents {
   addListener(event: 'plugin:middleware:user:after', listener: (data: PluginDataAfterUserMiddleware) => void|Promise<void>): this;
   addListener(event: 'plugin:launch:before', listener: (data: PluginDataBeforeLaunch) => void|Promise<void>): this;
   addListener(event: 'plugin:launch:after', listener: (data: PluginDataAfterLaunch) => void|Promise<void>): this;
-
-  addOnceListener(event: 'plugin:config:before', listener: (data: PluginDataBeforeConfig) => void|Promise<void>): this;
-  addOnceListener(event: 'plugin:config:after', listener: (data: PluginDataAfterConfig) => void|Promise<void>): this;
-  addOnceListener(event: 'plugin:middleware:internal:before', listener: (data: PluginDataBeforeInternalMiddleware) => void|Promise<void>): this;
-  addOnceListener(event: 'plugin:middleware:internal:after', listener: (data: PluginDataAfterInternalMiddleware) => void|Promise<void>): this;
-  addOnceListener(event: 'plugin:middleware:user:before', listener: (data: PluginDataBeforeUserMiddleware) => void|Promise<void>): this;
-  addOnceListener(event: 'plugin:middleware:user:after', listener: (data: PluginDataAfterUserMiddleware) => void|Promise<void>): this;
-  addOnceListener(event: 'plugin:launch:before', listener: (data: PluginDataBeforeLaunch) => void|Promise<void>): this;
-  addOnceListener(event: 'plugin:launch:after', listener: (data: PluginDataAfterLaunch) => void|Promise<void>): this;
 
 }
 
