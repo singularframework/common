@@ -14,7 +14,12 @@ export type ServerConfig<T=BaseServerConfig> = BaseServerConfig & T;
 
 export interface BaseServerConfig {
 
+  https?: boolean;
   port?: number;
+  httpsPort?: number;
+  httpsOnly?: boolean;
+  httpsKey?: string;
+  httpsCert?: string;
   predictive404?: boolean;
   predictive404Priority?: number;
   timezone?: string;
