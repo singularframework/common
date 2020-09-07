@@ -1,6 +1,5 @@
 import { Request as OriginalRequest } from 'express';
 import { CorsOptions } from 'cors';
-import { Express } from 'express';
 
 export { Response, NextFunction } from 'express';
 export type PipeFunction = (value: any, rawValues?: any) => Exclude<Exclude<any, void>, Promise<any>>;
@@ -117,7 +116,8 @@ export enum RouteMethod {
 export enum ModuleType {
 
   Service,
-  Router
+  Router,
+  Plugin
 
 }
 
@@ -211,92 +211,5 @@ export interface ValidationDefinition {
 export interface TransformationDefinition {
 
   [key: string]: AsyncPipeFunction|PipeFunction|ExecutablePipes;
-
-}
-
-export interface PluginEvents {
-
-  on(event: 'plugin:config:before', listener: (data: PluginDataBeforeConfig) => void|Promise<void>): this;
-  on(event: 'plugin:config:after', listener: (data: PluginDataAfterConfig) => void|Promise<void>): this;
-  on(event: 'plugin:middleware:internal:before', listener: (data: PluginDataBeforeInternalMiddleware) => void|Promise<void>): this;
-  on(event: 'plugin:middleware:internal:after', listener: (data: PluginDataAfterInternalMiddleware) => void|Promise<void>): this;
-  on(event: 'plugin:middleware:user:before', listener: (data: PluginDataBeforeUserMiddleware) => void|Promise<void>): this;
-  on(event: 'plugin:middleware:user:after', listener: (data: PluginDataAfterUserMiddleware) => void|Promise<void>): this;
-  on(event: 'plugin:launch:before', listener: (data: PluginDataBeforeLaunch) => void|Promise<void>): this;
-  on(event: 'plugin:launch:after', listener: (data: PluginDataAfterLaunch) => void|Promise<void>): this;
-
-  addListener(event: 'plugin:config:before', listener: (data: PluginDataBeforeConfig) => void|Promise<void>): this;
-  addListener(event: 'plugin:config:after', listener: (data: PluginDataAfterConfig) => void|Promise<void>): this;
-  addListener(event: 'plugin:middleware:internal:before', listener: (data: PluginDataBeforeInternalMiddleware) => void|Promise<void>): this;
-  addListener(event: 'plugin:middleware:internal:after', listener: (data: PluginDataAfterInternalMiddleware) => void|Promise<void>): this;
-  addListener(event: 'plugin:middleware:user:before', listener: (data: PluginDataBeforeUserMiddleware) => void|Promise<void>): this;
-  addListener(event: 'plugin:middleware:user:after', listener: (data: PluginDataAfterUserMiddleware) => void|Promise<void>): this;
-  addListener(event: 'plugin:launch:before', listener: (data: PluginDataBeforeLaunch) => void|Promise<void>): this;
-  addListener(event: 'plugin:launch:after', listener: (data: PluginDataAfterLaunch) => void|Promise<void>): this;
-
-}
-
-export interface PluginDataBeforeConfig {
-
-  /** The Express application used internally by Singular. */
-  app: Express;
-  /** The absolute path of the root directory. */
-  rootdir: string;
-  /** The registered config profiles. */
-  profiles: { [name: string]: ServerConfig };
-
-}
-
-export interface PluginDataAfterConfig extends PluginDataBeforeConfig {
-
-  /** The resolved config object. */
-  config: ServerConfig;
-
-}
-
-export interface PluginDataBeforeInternalMiddleware extends PluginDataAfterConfig {
-
-  /** Installed components (not initialized). */
-  components: {
-    routers: { [name: string]: PluginSingularComponent<'router'>; };
-    services: { [name: string]: PluginSingularComponent<'service'>; };
-  };
-
-}
-
-export interface PluginDataAfterInternalMiddleware extends PluginDataBeforeInternalMiddleware {}
-
-export interface PluginDataBeforeUserMiddleware extends PluginDataAfterInternalMiddleware {}
-
-export interface PluginDataAfterUserMiddleware extends PluginDataBeforeUserMiddleware {}
-
-export interface PluginDataBeforeLaunch extends PluginDataAfterUserMiddleware {
-
-  /** Installed components (initialized). */
-  components: {
-    routers: { [name: string]: PluginSingularComponent<'router'>; };
-    services: { [name: string]: PluginSingularComponent<'service'>; };
-  };
-
-}
-
-export interface PluginDataAfterLaunch extends PluginDataBeforeLaunch {}
-
-export interface PluginSingularComponent<T extends 'service'|'router' = any> {
-
-  metadata: PluginSingularComponentMetadata<T>;
-  onInit?(): void|Promise<void>;
-  onInjection?(services: any): void|Promise<void>;
-  onConfig?(config: ServerConfig): void|Promise<void>;
-
-}
-
-export interface PluginSingularComponentMetadata<T extends 'service'|'router' = any> {
-
-  name: string;
-  type: (T extends 'service' ? ModuleType.Service : ModuleType.Router);
-  priority: number;
-  routes?: (T extends 'router' ? Array<RouteDefinition> : undefined);
-  corsPolicy?: (T extends 'router' ? CORSPolicy : undefined);
 
 }
