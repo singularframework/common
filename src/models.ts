@@ -48,14 +48,19 @@ export interface Request extends OriginalRequest {
 
 }
 
-export interface ModuleDecoratorArgs {
+export interface PluginDecoratorArgs {
 
   name: string;
+
+}
+
+export interface ServiceDecoratorArgs extends PluginDecoratorArgs {
+
   priority?: number;
 
 }
 
-export interface RouterDecoratorArgs extends ModuleDecoratorArgs {
+export interface RouterDecoratorArgs extends ServiceDecoratorArgs {
 
   routes: RouteDefinition[];
   corsPolicy?: CORSPolicy;
