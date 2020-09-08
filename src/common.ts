@@ -11,6 +11,8 @@ import {
   BodyTransformationDefinition,
   RequestTransformerFunction,
   AsyncRequestTransformerFunction,
+  RequestValidatorFunction,
+  AsyncRequestValidatorFunction,
   AggregationTarget,
   PipeFunction,
   AsyncPipeFunction,
@@ -53,7 +55,7 @@ export namespace validate {
   /** Creates validation rule for request parameters. */
   export function params(validator: ValidationDefinition): ValidationRule { return { target: AggregationTarget.Params, validator }; }
   /** Creates custom validation rule for request. */
-  export function custom(validator: AsyncValidatorFunction|ValidatorFunction): ValidationRule { return { target: AggregationTarget.Custom, validator }; }
+  export function custom(validator: RequestValidatorFunction|AsyncRequestValidatorFunction): ValidationRule { return { target: AggregationTarget.Custom, validator }; }
 
 }
 

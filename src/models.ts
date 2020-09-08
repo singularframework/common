@@ -8,6 +8,8 @@ export type RequestTransformerFunction = (req: Request) => void;
 export type AsyncRequestTransformerFunction = (req: Request) => Promise<void>;
 export type ValidatorFunction = (value: any, rawValues?: any) => boolean|Error;
 export type AsyncValidatorFunction = (value: any, rawValues?: any) => Promise<boolean|Error>;
+export type RequestValidatorFunction = (req: Request) => boolean|Error;
+export type AsyncRequestValidatorFunction = (req: Request) => Promise<boolean|Error>;
 
 export type ServerConfig<T=BaseServerConfig> = BaseServerConfig & T;
 
