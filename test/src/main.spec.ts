@@ -66,6 +66,16 @@ describe('Common', function() {
       validator: bodyRuleValidator
     });
 
+    const paramsRuleValidator = {
+      'value': value => +value > 0 && +value < 100
+    };
+    const paramsRule = validate.params(paramsRuleValidator);
+
+    expect(paramsRule).to.deep.equal({
+      target: AggregationTarget.Params,
+      validator: paramsRuleValidator
+    });
+
     const customValidator = (req) => req !== undefined;
     const customRule = validate.custom(customValidator);
 
@@ -131,6 +141,23 @@ describe('Common', function() {
 
     expect(bodyRuleOrigin).to.deep.equal({
       target: AggregationTarget.Body,
+      transformer: 'origin'
+    });
+
+    const paramsRuleTransformer = {
+      'page': value => +value
+    };
+    const paramsRule = transform.params(paramsRuleTransformer);
+
+    expect(paramsRule).to.deep.equal({
+      target: AggregationTarget.Params,
+      transformer: paramsRuleTransformer
+    });
+
+    const paramsRuleOrigin = transform.params('origin');
+
+    expect(paramsRuleOrigin).to.deep.equal({
+      target: AggregationTarget.Params,
       transformer: 'origin'
     });
 

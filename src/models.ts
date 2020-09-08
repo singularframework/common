@@ -165,6 +165,7 @@ export enum AggregationTarget {
   Headers,
   Queries,
   Body,
+  Params,
   Custom
 
 }

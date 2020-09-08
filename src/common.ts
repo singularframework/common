@@ -50,8 +50,10 @@ export namespace validate {
   export function queries(validator: ValidationDefinition): ValidationRule { return { target: AggregationTarget.Queries, validator }; }
   /** Creates validation rule for request body. */
   export function body(validator: BodyValidationDefinition|ValidatorFunction|AsyncValidatorFunction|ExecutableValidators): ValidationRule { return { target: AggregationTarget.Body, validator }; }
+  /** Creates validation rule for request parameters. */
+  export function params(validator: ValidationDefinition): ValidationRule { return { target: AggregationTarget.Params, validator }; }
   /** Creates custom validation rule for request. */
-  export function custom(validator: AsyncValidatorFunction|ValidatorFunction): ValidationRule { return { target: AggregationTarget.Custom, validator } };
+  export function custom(validator: AsyncValidatorFunction|ValidatorFunction): ValidationRule { return { target: AggregationTarget.Custom, validator }; }
 
 }
 
@@ -63,8 +65,10 @@ export namespace transform {
   export function queries(transformer: TransformationDefinition|'origin'): TransformationRule { return { target: AggregationTarget.Queries, transformer }; }
   /** Creates transformation rule for request body. */
   export function body(transformer: BodyTransformationDefinition|PipeFunction|AsyncPipeFunction|ExecutablePipes|'origin'): TransformationRule { return { target: AggregationTarget.Body, transformer }; }
+  /** Creates transformation rule for request params. */
+  export function params(transformer: TransformationDefinition|'origin'): TransformationRule { return { target: AggregationTarget.Params, transformer }; }
   /** Creates custom transformation rule for request. */
-  export function custom(transformer: RequestTransformerFunction|AsyncRequestTransformerFunction): TransformationRule { return { target: AggregationTarget.Custom, transformer } };
+  export function custom(transformer: RequestTransformerFunction|AsyncRequestTransformerFunction): TransformationRule { return { target: AggregationTarget.Custom, transformer }; }
 
 }
 
