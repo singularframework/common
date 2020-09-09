@@ -46,7 +46,10 @@ export interface BaseServerConfig {
 
 export interface Request extends OriginalRequest {
 
-  sessionId: string;
+  session?: {
+    id: string;
+    isNew: boolean;
+  };
 
 }
 

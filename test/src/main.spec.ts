@@ -161,7 +161,7 @@ describe('Common', function() {
       transformer: 'origin'
     });
 
-    const customTransformer = (req: Request) => { req.sessionId = null; return req; };
+    const customTransformer = (req: Request) => { req.session = { id: null, isNew: null }; return req; };
     const customRule = transform.custom(customTransformer);
 
     expect(customRule).to.deep.equal({
