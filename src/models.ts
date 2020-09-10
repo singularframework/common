@@ -1,4 +1,4 @@
-import { Request as OriginalRequest } from 'express';
+import { Request as OriginalRequest, Response } from 'express';
 import { CorsOptions } from 'cors';
 
 export { Response, NextFunction } from 'express';
@@ -69,6 +69,12 @@ export interface RouterDecoratorArgs extends ServiceDecoratorArgs {
 
   routes: RouteDefinition[];
   corsPolicy?: CORSPolicy;
+
+}
+
+export interface InterceptorDecoratorArgs extends ServiceDecoratorArgs {
+
+  intercepts?: 'all' | string[];
 
 }
 
@@ -144,6 +150,7 @@ export interface ModuleMetadata {
   routes?: RouteDefinition[];
   priority?: number;
   corsPolicy?: CORSPolicy;
+  intercepts?: 'all' | string[];
 
 }
 
@@ -162,6 +169,12 @@ export interface OnConfig {
 export interface OnInit {
 
   onInit(): void|Promise<void>;
+
+}
+
+export interface OnInterception {
+
+  onInterception(body: any, req: Request, res: Response): any;
 
 }
 
