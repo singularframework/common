@@ -133,6 +133,7 @@ export enum ModuleType {
 
   Service,
   Router,
+  Interceptor,
   Plugin
 
 }
