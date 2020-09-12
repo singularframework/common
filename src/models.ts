@@ -1,7 +1,7 @@
-import { Request as OriginalRequest, Response } from 'express';
+import { Request as OriginalRequest, Response as OriginalResponse } from 'express';
 import { CorsOptions } from 'cors';
 
-export { Response, NextFunction } from 'express';
+export { NextFunction } from 'express';
 export type PipeFunction = (value: any, rawValues?: any) => Exclude<Exclude<any, void>, Promise<any>>;
 export type AsyncPipeFunction = (value: any, rawValues?: any) => Promise<Exclude<any, void>>;
 export type RequestTransformerFunction = (req: Request) => void;
@@ -50,6 +50,12 @@ export interface Request extends OriginalRequest {
     id: string;
     isNew: boolean;
   };
+
+}
+
+export interface Response extends OriginalResponse {
+
+  respond(body: any): Promise<void>;
 
 }
 
