@@ -55,6 +55,11 @@ export interface Request extends OriginalRequest {
 
 export interface Response extends OriginalResponse {
 
+  /**
+  * Runs all interceptors and sends the body.
+  * If body is error, it will be converted to ServerError and be sent using ServerError.respond().
+  * If body is object, it will be sent using res.json() and res.send() if otherwise.
+  */
   respond(body: any): Promise<void>;
 
 }
