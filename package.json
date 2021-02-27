@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+ssh://git@github.com/singularframework/common.git"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "singular",
     "backend",
